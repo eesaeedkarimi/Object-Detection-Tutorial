@@ -7,3 +7,12 @@ or
 * train or fine tune one of the available models on a custom dataset.
 
 In both cases this tutorial helps you do this with a scientific approach.
+
+What you need to know or study from other sources:
+* Python programming
+* Working with deep learning frameworks
+
+What we will explore deeply:
+* Available models for object detection
+* Standard datasets of object detection
+* Evaluation metrics
