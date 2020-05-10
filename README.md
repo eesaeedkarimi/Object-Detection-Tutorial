@@ -1,2 +1,2 @@
 # Object Detection Tutorial
-A tutorial for a scientific approach of training and evaluating an Object Detector
+In this tutorial we are going to see how to train and evaluate a convolotional neuaral network on a costum datasset.
