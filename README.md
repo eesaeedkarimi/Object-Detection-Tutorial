@@ -23,3 +23,6 @@ Our approach is to:
 * Choose one of the available models and evaluate it on the dataset.
 * Improve the model.
 * Evaluate it again and analyze errors.
+
+## Table of Contents
+* Object Detection problem
