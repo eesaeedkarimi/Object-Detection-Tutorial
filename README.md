@@ -16,3 +16,10 @@ What we will explore deeply:
 * Available models for object detection
 * Standard datasets of object detection
 * Evaluation metrics
+
+## Aproach
+Our approach is to:
+* Define the object detection problem.
+* Choose one of the available models and evaluate it on the dataset.
+* Improve the model.
+* Evaluate it again and analyze errors.
