@@ -25,7 +25,7 @@ Our approach is to:
 * Evaluate it again and analyze errors.
 
 ## Table of Contents
-1. Object detection problem definition
+1. [Object detection problem definition] (https://github.com/eesaeedkarimi/Object-Detection-Tutorial#object-detection-problem-definition)
 2. Object detection Datasets
 3. Object detection Evaluation Metrics
 4. Available models for object detection
