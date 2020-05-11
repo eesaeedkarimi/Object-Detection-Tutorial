@@ -25,10 +25,10 @@ Our approach is to:
 * Evaluate it again and analyze errors.
 
 ## Table of Contents
-* Object detection problem definition
-* Object detection Datasets
-* Object detection Evaluation Metrics
-* Available models for object detection
-* Evaluation of Results
+1. Object detection problem definition
+2. Object detection Datasets
+3. Object detection Evaluation Metrics
+4. Available models for object detection
+5. Evaluation of Results
 
 ## Object detection problem definition
