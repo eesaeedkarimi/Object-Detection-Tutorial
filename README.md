@@ -8,7 +8,7 @@ or
 
 In both cases, this tutorial helps you do this with a scientific approach.
 
-What you need to know or study from other sources:
+What you need to know in advance or study from other sources:
 * Python programming
 * Working with deep learning frameworks
 
