@@ -37,7 +37,7 @@ Object detection is the task of finding objects in an image. The type (class) an
 
 ### Class:
 Each object detector can detect a limited types of objects. For example a hypothetical object detector that is trained for traffic control can detect car, motorcycle, bicycle, bus and truck. A number from 0 to 4 is assigned to each of these 5 classes and the object detector machine must determine the class of each object with this output parameter.  
-Number and definition of these classes is determined by the dataset that used for training the model and adding a new class to a trained model is not a simple task.
+Number and definition of these classes are determined by the dataset that used for training the model and adding a new class to a trained model is not a simple task.
 ### Location:
 Object detector should find the Bounding Box of each object that is the smallest rectangle includes all points of the object. Bounding Box can be defined with one of these methods:  
 * left, top, width, height \[x, y, w, h\]  
