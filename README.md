@@ -26,10 +26,10 @@ Our approach is to:
 
 ## Table of Contents
 1. [Problem definition](#problem-definition)
-2. [Datasets](https://github.com/eesaeedkarimi/Object-Detection-Tutorial#datasets)
-3. [Evaluation Metrics](https://github.com/eesaeedkarimi/Object-Detection-Tutorial#evaluation-metrics)
-4. [Available Models](https://github.com/eesaeedkarimi/Object-Detection-Tutorial#available-models)
-5. [Evaluation of the Results](https://github.com/eesaeedkarimi/Object-Detection-Tutorial#evaluation-of-the-results)
+2. [Datasets](#datasets)
+3. [Evaluation Metrics](#evaluation-metrics)
+4. [Available Models](#available-models)
+5. [Evaluation of the Results](#evaluation-of-the-results)
 6. [Train the network and analyze errors](#train-the-network-and-analyze-errors)
 
 ## Problem definition
@@ -61,15 +61,52 @@ of the objects that are defined in dataset classes in a way that the bounding bo
 includes all points of the object.  
 Some of the most useful object detection datasets are as follows:  
 ### MS COCO
+Microsoft COCO is a large-scale object detection, segmentation, and captioning dataset. 
+Also a challenge
+link
+year
+number of image, objects, classes
 
 ### Open Images
+link
+year
+number of image, objects, classes
 
 ### Pascal VOC
+link
+year
+number of image, objects, classes
+
+### A survey on MS COCO
+every dataset has 3 parts: data, label and evaluation scenarios.
+Images
+Labels
+Evaluation codes (in next section)  
+
+To download images: explore page of coco  
+To download labels:  
+read labels and explore  
+json file, read json, what is in the file?
+label format
+number of images, what are labels? 
 
 ## Evaluation Metrics
+mAP
+Precision
+Recall
+IoU
+Precision Recall curve
+Mean over classes
 
 ## Available Models
+yolov3
 
 ## Evaluation of the Results
+main results
+coco api
+custom dataset
+limit classes
+limit classes and evaluate
+we are going to fine tune and evaluate again
 
 ## Train the network and analyze errors
