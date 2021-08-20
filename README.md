@@ -53,7 +53,7 @@ These above 4 numbers are Location1, Location2, Location3 and Loaction4.
 ### Score:
 Score value which is a number between 0 and 1, defines how much the trained machine is sure that an object with this class exists in this location of image.
 
-The result of an object detector is visualized in the following figure.
+The result of an object detector is visualized in the following figure. **TODO**
  
 ## Datasets
 Creating an object detection dataset is costly. Expert annotators have to draw the bounding boxes carefully around all 
@@ -61,21 +61,25 @@ of the objects that are defined in dataset classes in a way that the bounding bo
 includes all points of the object.  
 Some of the most useful object detection datasets are as follows:  
 ### MS COCO
-Microsoft COCO is a large-scale object detection, segmentation, and captioning dataset. 
-Also a challenge
-link
-year
-number of image, objects, classes
+[Microsoft COCO](https://cocodataset.org/) is a large-scale object detection, segmentation, and captioning dataset. 
+It is also a challenge that researchers evaluate their methods and the winners are rewarded based on their rank.  
+Last version of the object detection dataset is released in 2017. The train, validation, and test sets, 
+containing more than 200,000 images and 80 object classes, are available on the [download page of COCO](https://cocodataset.org/#download).
 
 ### Open Images
-link
-year
-number of image, objects, classes
+[Open Images](https://storage.googleapis.com/openimages/web/factsfigures.html) is the largest existing dataset of images 
+annotated with labels of bounding boxes, segmentation masks, visual relationships, and localized narratives.
+The last version of Open Images is V6 that is released in 2020. 
+It contains a total of 16M bounding boxes for 600 object classes on 1.9M images and is available for free [download](https://storage.googleapis.com/openimages/web/download.html) 
 
 ### Pascal VOC
-link
-year
-number of image, objects, classes
+The [Pascal Visual Object Classes (VOC)](http://host.robots.ox.ac.uk/pascal/VOC/index.html) is a very popular dataset 
+for image classification, object detection, and segmentation.
+The last version of dataset is released in 2012. 
+The train/val data has 11,530 images with 27,450 bounding box labels of 20 classes. It can be downloaded from the main 
+website or it's [mirror](https://pjreddie.com/projects/pascal-voc-dataset-mirror).
+
+
 
 ### A survey on MS COCO
 every dataset has 3 parts: data, label and evaluation scenarios.
