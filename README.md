@@ -34,7 +34,9 @@ Our approach is to:
 
 ## Problem definition
 Object detection is the task of finding objects in an image. The type (class) and location of objects must also be determined. So the input is an image and the output is a list of objects each containing 6 numbers:  
-\[Class, Location 1, Location 2, Location 3, Location 4, Score\]
+```python
+[Class, Location 1, Location 2, Location 3, Location 4, Score]
+```
 
 ### Class:
 Each object detector can detect a limited types of objects. For example a hypothetical object detector that is trained 
@@ -82,9 +84,86 @@ website or it's [mirror](https://pjreddie.com/projects/pascal-voc-dataset-mirror
 
 
 ### A survey on MS COCO
-every dataset has 3 parts: data, label and evaluation scenarios.
-Images
-Labels
+Every dataset has 3 main parts: Data, Labels and Evaluation scenarios. 
+1. Data  
+COCO is an image dataset so the Data part contains folders for [Train](http://images.cocodataset.org/zips/train2017.zip), 
+[Validation](http://images.cocodataset.org/zips/val2017.zip), and [Test](http://images.cocodataset.org/zips/test2017.zip) images.  
+COCO has an [Explore](https://cocodataset.org/#explore) 
+page where image samples of each class can be seen with or without their labels.  
+2. Labels
+Bounding box labels of train and validation images are [available](http://images.cocodataset.org/annotations/annotations_trainval2017.zip) as annotation files. 
+Test images are used for challenge and do not have bounding box labels. 
+However heir info is [available](http://images.cocodataset.org/annotations/image_info_test2017.zip).  
+COCO labels are in JSON format. JSON is a file format that uses human-readable text to store data with 
+attribute–value pairs and arrays.  
+#### JSON files
+Let's take a look at JSON format. An example of a JSON file is like:  
+
+```json
+{
+    "attribute1": 1,
+    "attribute2": [21, 22],
+    "attribute3":
+        [
+            31,
+            32,
+            33
+        ],
+    "attribute4":
+        [
+            {
+                "attribute4_1_1": 411,
+                "attribute4_1_2": 412,
+                "attribute4_1_3": 413
+            },
+            {
+                "attribute4_2": 42
+            }
+        ]
+}
+```
+
+Small size JSON files can be viewed by text editors like Notepad++. However they may not be as pretty formatted as above. 
+For example the above JSON file can be like the following while it contains the same information:
+
+```json
+{"attribute1":1,"attribute2":[21,22],"attribute3":[31,32,33],"attribute4":[{"attribute4_1_1":411,"attribute4_1_2":412,"attribute4_1_3":413},{"attribute4_2":42}]}
+```
+
+Some plugins can also make pretty JSON files to show text editors. But it is not enough and some tools are needed to 
+read, edit, and save JSON files in python. `json` library can perform these tasks.
+
+As an example the following code uses `json` library to load the JSON file to a dictionary:
+```python
+import json
+with open('./sample_files/sample_json.json', 'r') as f:
+    data = json.load(f)
+print(data['attribute1'])
+print(data['attribute2'])
+print(data['attribute3'])
+print(data['attribute4'])
+print(data['attribute4'][0]['attribute4_1_1'])
+```
+The result will be:
+```
+1
+[21, 22]
+[31, 32, 33]
+[{'attribute4_1_1': 411, 'attribute4_1_2': 412, 'attribute4_1_3': 413}, {'attribute4_2': 42}]
+411
+```
+
+Take a look at coco labels
+train, val, test
+load json of train file is too big can not be viewed by text editors.
+main fields
+
+field by field
+number of images
+number of annotations
+
+categories
+
 Evaluation codes (in next section)  
 
 To download images: explore page of coco  
