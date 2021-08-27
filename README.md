@@ -361,26 +361,30 @@ print(f'Number of validation annotations: {len(annotations)}')
 
 + **Evaluation Scenarios**    
 Every dataset should has a well defined evaluation scenario so that a researcher can compare the performance of 
-different models or a model before and after fine tuning. In the next section evaluation metrics and available tools for
+different models or a model before and after fine tuning. In the next sections evaluation metrics and available tools for
  evaluations will be explored.  
 
 ## Evaluation Metrics
-mAP
-Precision
-Recall
-IoU
-Precision Recall curve
+In this section 
+mAP,
+Precision,
+Recall,
+IoU,
+Precision Recall curve, and
 Mean over classes
-
+will be described.  
 ## Available Models
-yolov3
-
+In this section 
+some available methods like 
+yolov3 and efficientNet 
+will be described.  
 ## Evaluation of the Results
-main results
-coco api
-custom dataset
-limit classes
-limit classes and evaluate
-we are going to fine tune and evaluate again
-
+In this section 
+main results of a model, 
+coco api, 
+custom dataset, 
+how to limit classes, 
+evaluation of limited classes, 
+will be described.  
 ## Train the network and analyze errors
+In this section, we are going to fine tune and evaluate the model again.  
