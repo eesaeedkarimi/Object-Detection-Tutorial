@@ -81,16 +81,14 @@ The last version of dataset is released in 2012.
 The train/val data has 11,530 images with 27,450 bounding box labels of 20 classes. It can be downloaded from the main 
 website or it's [mirror](https://pjreddie.com/projects/pascal-voc-dataset-mirror).
 
-
-
 ### A survey on MS COCO
-Every dataset has 3 main parts: Data, Labels and Evaluation scenarios. 
-1. Data  
+Every dataset has 3 main parts: Data, Labels and Evaluation Scenarios. 
++ **Data**  
 COCO is an image dataset so the Data part contains folders for [Train](http://images.cocodataset.org/zips/train2017.zip), 
 [Validation](http://images.cocodataset.org/zips/val2017.zip), and [Test](http://images.cocodataset.org/zips/test2017.zip) images.  
 COCO has an [Explore](https://cocodataset.org/#explore) 
 page where image samples of each class can be seen with or without their labels.  
-2. Labels
++ **Labels**  
 Bounding box labels of train and validation images are [available](http://images.cocodataset.org/annotations/annotations_trainval2017.zip) as annotation files. 
 Test images are used for challenge and do not have bounding box labels. 
 However heir info is [available](http://images.cocodataset.org/annotations/image_info_test2017.zip).  
@@ -130,7 +128,7 @@ For example the above JSON file can be like the following while it contains the 
 {"attribute1":1,"attribute2":[21,22],"attribute3":[31,32,33],"attribute4":[{"attribute4_1_1":411,"attribute4_1_2":412,"attribute4_1_3":413},{"attribute4_2":42}]}
 ```
 
-Some plugins can also make pretty JSON files to show text editors. But it is not enough and some tools are needed to 
+Some plugins can also make pretty JSON files to show in text editors. But it is not enough and some tools are needed to 
 read, edit, and save JSON files in python. `json` library can perform these tasks.
 
 As an example the following code uses `json` library to load the JSON file to a dictionary:
@@ -146,32 +144,225 @@ print(data['attribute4'][0]['attribute4_1_1'])
 ```
 The result will be:
 ```
-1
-[21, 22]
-[31, 32, 33]
-[{'attribute4_1_1': 411, 'attribute4_1_2': 412, 'attribute4_1_3': 413}, {'attribute4_2': 42}]
-411
+>>> 1
+>>> [21, 22]
+>>> [31, 32, 33]
+>>> [{'attribute4_1_1': 411, 'attribute4_1_2': 412, 'attribute4_1_3': 413}, {'attribute4_2': 42}]
+>>> 411
 ```
 
-Take a look at coco labels
-train, val, test
-load json of train file is too big can not be viewed by text editors.
-main fields
+#### MS COCO Labels  
+Now let's take a look at COCO labels. As mentioned before, train and validation sets have bounding box labels.
+After downloading and extracting `instances_train2017.json` and `instances_val2017.json` files into `COCO/annotations` 
+directory, the following codes can be used to explore the annotations:  
+```python
+import json
 
-field by field
-number of images
-number of annotations
+print('Exploring train annotation file')
+with open('./COCO/annotations/instances_train2017.json', 'r') as f:
+    train_annotations = json.load(f)
 
-categories
+print(train_annotations.keys())
+```
+```
+>>> dict_keys(['info', 'licenses', 'images', 'annotations', 'categories'])
+```
+keys & values of Info:  
+```python
+info = train_annotations['info']
+for key in info.keys():
+    print(f'{key}: {info[key]}')
+```
+```
+>>> description: COCO 2017 Dataset
+>>> url: http://cocodataset.org
+>>> version: 1.0
+>>> year: 2017
+>>> contributor: COCO Consortium
+>>> date_created: 2017/09/01
+```
+Licenses:
+```python
+licenses = train_annotations['licenses']
+for license in licenses:
+    print(license)
+```
+```
+>>> Licenses:
+>>> {'url': 'http://creativecommons.org/licenses/by-nc-sa/2.0/', 'id': 1, 'name': 'Attribution-NonCommercial-ShareAlike License'}
+>>> {'url': 'http://creativecommons.org/licenses/by-nc/2.0/', 'id': 2, 'name': 'Attribution-NonCommercial License'}
+>>> {'url': 'http://creativecommons.org/licenses/by-nc-nd/2.0/', 'id': 3, 'name': 'Attribution-NonCommercial-NoDerivs License'}
+>>> {'url': 'http://creativecommons.org/licenses/by/2.0/', 'id': 4, 'name': 'Attribution License'}
+>>> {'url': 'http://creativecommons.org/licenses/by-sa/2.0/', 'id': 5, 'name': 'Attribution-ShareAlike License'}
+>>> {'url': 'http://creativecommons.org/licenses/by-nd/2.0/', 'id': 6, 'name': 'Attribution-NoDerivs License'}
+>>> {'url': 'http://flickr.com/commons/usage/', 'id': 7, 'name': 'No known copyright restrictions'}
+>>> {'url': 'http://www.usa.gov/copyright.shtml', 'id': 8, 'name': 'United States Government Work'}
+```
+Categories:  
+```python
+categories = train_annotations['categories']
+for category in categories:
+    print(category)
+```
+```
+>>> {'supercategory': 'person', 'id': 1, 'name': 'person'}
+>>> {'supercategory': 'vehicle', 'id': 2, 'name': 'bicycle'}
+>>> {'supercategory': 'vehicle', 'id': 3, 'name': 'car'}
+>>> {'supercategory': 'vehicle', 'id': 4, 'name': 'motorcycle'}
+>>> {'supercategory': 'vehicle', 'id': 5, 'name': 'airplane'}
+>>> {'supercategory': 'vehicle', 'id': 6, 'name': 'bus'}
+>>> {'supercategory': 'vehicle', 'id': 7, 'name': 'train'}
+>>> {'supercategory': 'vehicle', 'id': 8, 'name': 'truck'}
+>>> {'supercategory': 'vehicle', 'id': 9, 'name': 'boat'}
+>>> {'supercategory': 'outdoor', 'id': 10, 'name': 'traffic light'}
+>>> {'supercategory': 'outdoor', 'id': 11, 'name': 'fire hydrant'}
+>>> {'supercategory': 'outdoor', 'id': 13, 'name': 'stop sign'}
+>>> {'supercategory': 'outdoor', 'id': 14, 'name': 'parking meter'}
+>>> {'supercategory': 'outdoor', 'id': 15, 'name': 'bench'}
+>>> {'supercategory': 'animal', 'id': 16, 'name': 'bird'}
+>>> {'supercategory': 'animal', 'id': 17, 'name': 'cat'}
+>>> {'supercategory': 'animal', 'id': 18, 'name': 'dog'}
+>>> {'supercategory': 'animal', 'id': 19, 'name': 'horse'}
+>>> {'supercategory': 'animal', 'id': 20, 'name': 'sheep'}
+>>> {'supercategory': 'animal', 'id': 21, 'name': 'cow'}
+>>> {'supercategory': 'animal', 'id': 22, 'name': 'elephant'}
+>>> {'supercategory': 'animal', 'id': 23, 'name': 'bear'}
+>>> {'supercategory': 'animal', 'id': 24, 'name': 'zebra'}
+>>> {'supercategory': 'animal', 'id': 25, 'name': 'giraffe'}
+>>> {'supercategory': 'accessory', 'id': 27, 'name': 'backpack'}
+>>> {'supercategory': 'accessory', 'id': 28, 'name': 'umbrella'}
+>>> {'supercategory': 'accessory', 'id': 31, 'name': 'handbag'}
+>>> {'supercategory': 'accessory', 'id': 32, 'name': 'tie'}
+>>> {'supercategory': 'accessory', 'id': 33, 'name': 'suitcase'}
+>>> {'supercategory': 'sports', 'id': 34, 'name': 'frisbee'}
+>>> {'supercategory': 'sports', 'id': 35, 'name': 'skis'}
+>>> {'supercategory': 'sports', 'id': 36, 'name': 'snowboard'}
+>>> {'supercategory': 'sports', 'id': 37, 'name': 'sports ball'}
+>>> {'supercategory': 'sports', 'id': 38, 'name': 'kite'}
+>>> {'supercategory': 'sports', 'id': 39, 'name': 'baseball bat'}
+>>> {'supercategory': 'sports', 'id': 40, 'name': 'baseball glove'}
+>>> {'supercategory': 'sports', 'id': 41, 'name': 'skateboard'}
+>>> {'supercategory': 'sports', 'id': 42, 'name': 'surfboard'}
+>>> {'supercategory': 'sports', 'id': 43, 'name': 'tennis racket'}
+>>> {'supercategory': 'kitchen', 'id': 44, 'name': 'bottle'}
+>>> {'supercategory': 'kitchen', 'id': 46, 'name': 'wine glass'}
+>>> {'supercategory': 'kitchen', 'id': 47, 'name': 'cup'}
+>>> {'supercategory': 'kitchen', 'id': 48, 'name': 'fork'}
+>>> {'supercategory': 'kitchen', 'id': 49, 'name': 'knife'}
+>>> {'supercategory': 'kitchen', 'id': 50, 'name': 'spoon'}
+>>> {'supercategory': 'kitchen', 'id': 51, 'name': 'bowl'}
+>>> {'supercategory': 'food', 'id': 52, 'name': 'banana'}
+>>> {'supercategory': 'food', 'id': 53, 'name': 'apple'}
+>>> {'supercategory': 'food', 'id': 54, 'name': 'sandwich'}
+>>> {'supercategory': 'food', 'id': 55, 'name': 'orange'}
+>>> {'supercategory': 'food', 'id': 56, 'name': 'broccoli'}
+>>> {'supercategory': 'food', 'id': 57, 'name': 'carrot'}
+>>> {'supercategory': 'food', 'id': 58, 'name': 'hot dog'}
+>>> {'supercategory': 'food', 'id': 59, 'name': 'pizza'}
+>>> {'supercategory': 'food', 'id': 60, 'name': 'donut'}
+>>> {'supercategory': 'food', 'id': 61, 'name': 'cake'}
+>>> {'supercategory': 'furniture', 'id': 62, 'name': 'chair'}
+>>> {'supercategory': 'furniture', 'id': 63, 'name': 'couch'}
+>>> {'supercategory': 'furniture', 'id': 64, 'name': 'potted plant'}
+>>> {'supercategory': 'furniture', 'id': 65, 'name': 'bed'}
+>>> {'supercategory': 'furniture', 'id': 67, 'name': 'dining table'}
+>>> {'supercategory': 'furniture', 'id': 70, 'name': 'toilet'}
+>>> {'supercategory': 'electronic', 'id': 72, 'name': 'tv'}
+>>> {'supercategory': 'electronic', 'id': 73, 'name': 'laptop'}
+>>> {'supercategory': 'electronic', 'id': 74, 'name': 'mouse'}
+>>> {'supercategory': 'electronic', 'id': 75, 'name': 'remote'}
+>>> {'supercategory': 'electronic', 'id': 76, 'name': 'keyboard'}
+>>> {'supercategory': 'electronic', 'id': 77, 'name': 'cell phone'}
+>>> {'supercategory': 'appliance', 'id': 78, 'name': 'microwave'}
+>>> {'supercategory': 'appliance', 'id': 79, 'name': 'oven'}
+>>> {'supercategory': 'appliance', 'id': 80, 'name': 'toaster'}
+>>> {'supercategory': 'appliance', 'id': 81, 'name': 'sink'}
+>>> {'supercategory': 'appliance', 'id': 82, 'name': 'refrigerator'}
+>>> {'supercategory': 'indoor', 'id': 84, 'name': 'book'}
+>>> {'supercategory': 'indoor', 'id': 85, 'name': 'clock'}
+>>> {'supercategory': 'indoor', 'id': 86, 'name': 'vase'}
+>>> {'supercategory': 'indoor', 'id': 87, 'name': 'scissors'}
+>>> {'supercategory': 'indoor', 'id': 88, 'name': 'teddy bear'}
+>>> {'supercategory': 'indoor', 'id': 89, 'name': 'hair drier'}
+>>> {'supercategory': 'indoor', 'id': 90, 'name': 'toothbrush'}
+```
+Images:  
+```python
+images = train_annotations['images']
+print(f'Number of train images: {len(images)}')
+```
+```
+>>> Number of train images: 118287
+```
+Explore one image of train set:
+```python
+one_image = images[0]
+for key in one_image.keys():
+    print(f'{key}: {one_image[key]}')
+```
+```
+>>> license: 3
+>>> file_name: 000000391895.jpg
+>>> coco_url: http://images.cocodataset.org/train2017/000000391895.jpg
+>>> height: 360
+>>> width: 640
+>>> date_captured: 2013-11-14 11:18:45
+>>> flickr_url: http://farm9.staticflickr.com/8186/8119368305_4e622c8349_z.jpg
+>>> id: 391895
+```
+Annotations:  
+```python
+annotations = train_annotations['annotations']
+print(f'Number of train annotations: {len(annotations)}')
+```
+```
+>>> Number of train annotations: 860001
+```
+Explore one annotation of train set
+```python
+one_annotation = annotations[0]
+for key in one_annotation.keys():
+    print(f'{key}: {one_annotation[key]}')
+```
+```
+>>> segmentation: [[239.97, 260.24, 222.04, 270.49, 199.84, 253.41, 213.5, 227.79, 259.62, 200.46, 274.13, 202.17, 277.55, 210.71, 249.37, 253.41, 237.41, 264.51, 242.54, 261.95, 228.87, 271.34]]
+>>> area: 2765.1486500000005
+>>> iscrowd: 0
+>>> image_id: 558840
+>>> bbox: [199.84, 200.46, 77.71, 70.88]
+>>> category_id: 58
+>>> id: 156
+```
 
-Evaluation codes (in next section)  
+Each image may have more than one annotation. Every annotation has an `image_id` field that shows which image does this 
+annotation belong to? Can you write a code to find all annotations of the image with `image_id=391895`?  
+  
+**Exploring validation annotation file:**
+```python
+with open('../COCO/annotations/instances_val2017.json', 'r') as f:
+    val_annotations = json.load(f)
+```
+Images:
+```python
+images = val_annotations['images']
+print(f'Number of validation images: {len(images)}')
+```
+```
+>>> Number of validation images: 5000
+```
+Annotations:
+```python
+annotations = val_annotations['annotations']
+print(f'Number of validation annotations: {len(annotations)}')
+```
+```
+>>> Number of validation annotations: 36781
+```
 
-To download images: explore page of coco  
-To download labels:  
-read labels and explore  
-json file, read json, what is in the file?
-label format
-number of images, what are labels? 
++ **Evaluation Scenarios**    
+Every dataset should has a well defined evaluation scenario so that a researcher can compare the performance of 
+different models or a model before and after fine tuning. In the next section evaluation metrics and available tools for
+ evaluations will be explored.  
 
 ## Evaluation Metrics
 mAP
