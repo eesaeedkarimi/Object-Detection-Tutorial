@@ -55,7 +55,9 @@ These above 4 numbers are Location1, Location2, Location3 and Loaction4.
 ### Score:
 Score value which is a number between 0 and 1, defines how much the trained machine is sure that an object with this class exists in this location of image.
 
-The result of an object detector is visualized in the following figure. **TODO**
+The result of an object detector is visualized in the following figure.  
+  
+[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg/1024px-Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg">](https://en.wikipedia.org/wiki/Object_detection#/media/File:Detected-with-YOLO--Schreibtisch-mit-Objekten.jpg/)
  
 ## Datasets
 Creating an object detection dataset is costly. Expert annotators have to draw the bounding boxes carefully around all 
